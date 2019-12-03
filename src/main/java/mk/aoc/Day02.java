@@ -1,6 +1,7 @@
 package mk.aoc;
 
 import mk.aoc.util.FileUtil;
+import mk.aoc.util.Tools;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -59,48 +60,14 @@ public class Day02 {
         System.out.println("2:: " + outputNounVerb + " / " + duration2 + "ms");
     }
 
-    public static int calculateFuel(int mass) {
-        return mass / 3 - 2;
-    }
 
-    public static int calculateTotalFuel(int mass) {
-        int fuel = calculateFuel(mass);
-        fuel = fuel < 0 ? 0 : fuel;
-        int sum = fuel;
-        while (fuel > 0) {
-            fuel = calculateFuel(fuel);
-            fuel = fuel < 0 ? 0 : fuel;
-            sum += fuel;
-        }
-
-        return sum;
-    }
-
-    public static int[] convertStringArrayToIntArray(String[] stringArray) {
-        int size = stringArray.length;
-        if (size > 0) {
-            int[] intArry = new int[size];
-            for (int i = 0; i < size; i++) {
-                intArry[i] = Integer.parseInt(stringArray[i]);
-            }
-            return intArry;
-        } else {
-            return null;
-        }
-    }
-
-    public static void printIntArray(int[] array) {
-        if (array.length > 0) {
-            for (int i : array) {
-                System.out.print(i + ",");
-            }
-            System.out.println();
-        }
-    }
 
     public static int mostLeft(String[] input, int noun, int verb) {
-        System.out.println("========================== noun=" + noun + ", verb=" + verb + " =========================================================");
-        int[] opInput = convertStringArrayToIntArray(input);
+        if (Properties.print) {
+            System.out.println("========================== noun=" + noun + ", verb=" + verb + " =========================================================");
+        }
+
+        int[] opInput = Tools.convertStringArrayToIntArray(input);
         opInput[1] = noun;
         opInput[2] = verb;
 
@@ -115,11 +82,14 @@ public class Day02 {
                     int src2 = opInput[pos+2];
                     int val1 = opInput[src1];
                     int val2 = opInput[src2];
-                    System.out.println(":: [" + pos + "] :: ADD :: [" + dest + "] = [" + src1 + "] + [" + src2 + "]");
                     opInput[dest] = val1 + val2;
-                    System.out.println(":: [" + pos + "] :: ADD :: [" + dest + "] = " + val1 + " + " + val2);
-                    System.out.println(":: [" + pos + "] :: ADD :: [" + dest + "] = " + opInput[dest]);
-                    printIntArray(opInput);
+
+                    if (Properties.print) {
+                        System.out.println(":: [" + pos + "] :: ADD :: [" + dest + "] = [" + src1 + "] + [" + src2 + "]");
+                        System.out.println(":: [" + pos + "] :: ADD :: [" + dest + "] = " + val1 + " + " + val2);
+                        System.out.println(":: [" + pos + "] :: ADD :: [" + dest + "] = " + opInput[dest]);
+                        Tools.printIntArray(opInput);
+                    }
                     pos+=4;
                     break;
                 }
@@ -129,16 +99,22 @@ public class Day02 {
                     int src2 = opInput[pos+2];
                     int val1 = opInput[src1];
                     int val2 = opInput[src2];
-                    System.out.println(":: [" + pos + "] :: MULTIPLICATION :: [" + dest + "] = [" + src1 + "] * [" + src2 + "]");
                     opInput[dest] = val1 * val2;
-                    System.out.println(":: [" + pos + "] :: MULTIPLICATION :: [" + dest + "] = " + val1 + " * " + val2);
-                    System.out.println(":: [" + pos + "] :: MULTIPLICATION :: [" + dest + "] = " + opInput[dest]);
-                    printIntArray(opInput);
+
+                    if (Properties.print) {
+                        System.out.println(":: [" + pos + "] :: MULTIPLICATION :: [" + dest + "] = [" + src1 + "] * [" + src2 + "]");
+                        System.out.println(":: [" + pos + "] :: MULTIPLICATION :: [" + dest + "] = " + val1 + " * " + val2);
+                        System.out.println(":: [" + pos + "] :: MULTIPLICATION :: [" + dest + "] = " + opInput[dest]);
+                        Tools.printIntArray(opInput);
+                    }
                     pos+=4;
                     break;
                 }
                 case 99: {
-                    System.out.println(":: [" + pos + "] :: HALT");
+
+                    if (Properties.print) {
+                        System.out.println(":: [" + pos + "] :: HALT");
+                    }
                     halt = true;
                     break;
                 }
