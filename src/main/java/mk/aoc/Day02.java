@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Day02 {
+public class Day02 {//
 
     public static void main(String... args) {
         FileUtil file = new FileUtil();
