@@ -1,7 +1,5 @@
 package mk.aoc.model;
 
-import java.util.ArrayList;
-
 public class IntersectionPoint extends Point {
 
     private int totalSteps = -1;

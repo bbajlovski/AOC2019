@@ -24,6 +24,15 @@ public class Tools {
         }
     }
 
+    public static void printIntArray(String[] array) {
+        if (array.length > 0) {
+            for (String s : array) {
+                System.out.print(s + ",");
+            }
+            System.out.println();
+        }
+    }
+
     public static boolean hasSameAdjacent(int number) {
         boolean has = false;
 

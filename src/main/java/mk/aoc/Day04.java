@@ -1,17 +1,9 @@
 package mk.aoc;
 
-import mk.aoc.model.IntersectionPoint;
-import mk.aoc.model.Line;
-import mk.aoc.model.Point;
 import mk.aoc.util.FileUtil;
-import mk.aoc.util.LineUtil;
 import mk.aoc.util.Tools;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Day04 {
 
